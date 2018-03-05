@@ -11,8 +11,7 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Lato:300, 900" rel="stylesheet">
 
     <style>
       * {
@@ -35,11 +34,23 @@
         margin: 0 auto;
       }
       .header {
-        display: flex;
-        justify-content: center;
-        padding-top: 20px;
+        padding-top: 10px;
         margin-bottom: 75px;
       }
+      .back-link {
+        display: inline-block;
+        opacity: 0;
+        transition: all 0.3s;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #999;
+        font-family: Lato, sans-serif;
+      }
+
+      .back-link:hover {
+        color: #333;
+      }
+
       .me {
         text-align: center;
       }
@@ -62,9 +73,7 @@
       }
       .content__image {
         max-width: 100%;
-      }
-      .content__section {
-        margin: 4px;
+        width: 100%;
       }
       .content__figure {
         position: relative;
@@ -145,17 +154,61 @@
         fill: #0678BE;
       }
 
-      @media (min-width: 600px) {
-        .content {
-          display: flex;
-        }
-        .content__section {
+      .container {
+        position: relative;
+        width: 100%;
+      }
+
+      .content__section {
+        width: 100%;
+      }
+
+      .header,
+      .content__section,
+      .footer {
+        position: absolute;
+      }
+
+      .header {
+        width: 200px;
+        left: calc(50% - 100px);
+      }
+
+      .web {
+        top: 350px;
+      }
+
+      .drums {
+        /* images are 1.5/1 aspect ratio, so when they're full width they're 66.66vw tall */
+        top: calc(350px + 66.666666vw);
+      }
+
+      .footer {
+        top: calc(350px + 133.333333vw);
+        width: 100%;
+      }
+
+      @media (min-width: 800px) {
+        .web,
+        .drums {
+          top: 375px;
           width: 50%;
+          left: 0;
         }
-        .content__section:first-child {
-          margin-right: 0;
+        .drums {
+          left: 50%;
+        }
+        .footer {
+          top: calc(375px + 33.333333vw);
         }
       }
+
+      @media (min-width: 1200px) {
+        .footer {
+          top: 775px;
+        }
+      }
+
     </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -172,57 +225,62 @@
     <!-- <noscript>
       You need to enable JavaScript to run this app.
     </noscript> -->
+    <script>
+      function handleEarlyClick(e, target) {
+        console.log('early click');
+        sessionStorage.setItem('earlyClick', target);
+      }
+    </script>
 
     <div class="root" id="root">
-      <header class="header">
-        <figure class="me">
-          <img class="me__image" src="./images/me.png" alt="it's me!">
-          <figcaption class="me__caption">
-            <p class="me__name">Theo Ballew</p>
-            <a class="me__email" target="_blank" rel="noopener noreferrer" href="mailto:theoballew@gmail.com">theoballew@gmail.com</a>
-          </figcaption>
-        </figure>
-      </header>
-      <article class="content">
-        <section class="web content__section">
-          <a href="/web">
-            <figure class="content__figure">
+      <div class="container">
+        <header class="header">
+          <a class="back-link" href="/">Home</a>
+          <figure class="me">
+            <img class="me__image" src="./images/me.png" alt="it's me!">
+            <figcaption class="me__caption">
+              <p class="me__name">Theo Ballew</p>
+              <a class="me__email" target="_blank" rel="noopener noreferrer" href="mailto:theoballew@gmail.com">theoballew@gmail.com</a>
+            </figcaption>
+          </figure>
+        </header>
+        <article class="content">
+          <section class="web content__section">
+            <figure onclick="handleEarlyClick(event, 'web')" id="web" class="content__figure">
               <img class="content__image" src="./images/code.jpeg" alt="dumb stock photo of someone writing code ">
               <figcaption class="content__caption">Web</figcaption>
             </figure>
-          </a>
-        </section>
-        <section class="drums content__section">
-          <a href="/drums">
-            <figure class="content__figure">
+          </section>
+          <section class="drums content__section">
+            <figure onclick="handleEarlyClick(event, 'drums')" id="drums" class="content__figure">
               <img class="content__image" src="./images/drums.jpg" alt="me drummin'">
               <figcaption class="content__caption">Drums</figcaption>
             </figure>
-          </a>
-        </section>
-      </article>
-      <footer class="footer">
-        <ul class="social">
-          <li class="social__icon social__icon--drupal">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.drupal.org/u/void">
-              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1295 1586q-5-19-24-5-30 22-87 39t-131 17q-129 0-193-49-5-4-13-4-11 0-26 12-7 6-7.5 16t7.5 20q34 32 87.5 46t102.5 12.5 99-4.5q41-4 84.5-20.5t65-30 28.5-20.5q12-12 7-29zm-39-115q-19-47-39-61-23-15-76-15-47 0-71 10-29 12-78 56-26 24-12 44 9 8 17.5 4.5t31.5-23.5q3-2 10.5-8.5t10.5-8.5 10-7 11.5-7 12.5-5 15-4.5 16.5-2.5 20.5-1q27 0 44.5 7.5t23 14.5 13.5 22q10 17 12.5 20t12.5-1q23-12 14-34zm355-281q0-22-5-44.5t-16.5-45-34-36.5-52.5-14q-33 0-97 41.5t-129 83.5-101 42q-27 1-63.5-19t-76-49-83.5-58-100-49-111-19q-115 1-197 78.5t-84 178.5q-2 112 74 164 29 20 62.5 28.5t103.5 8.5q57 0 132-32.5t134-71 120-70.5 93-31q26 1 65 31.5t71.5 67 68 67.5 55.5 32q35 3 58.5-14t55.5-63q28-41 42.5-101t14.5-106zm53-160q0 164-62 304.5t-166 236-242.5 149.5-290.5 54-293-57.5-247.5-157-170.5-241.5-64-302q0-89 19.5-172.5t49-145.5 70.5-118.5 78.5-94 78.5-69.5 64.5-46.5 42.5-24.5q14-8 51-26.5t54.5-28.5 48-30 60.5-44q36-28 58-72.5t30-125.5q129 155 186 193 44 29 130 68t129 66q21 13 39 25t60.5 46.5 76 70.5 75 95 69 122 47 148.5 19.5 177.5z"/></svg>
-              drupal
-            </a>
-          </li>
-          <li class="social__icon social__icon--github">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/void--">
-              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z"/></svg>
-              github
-            </a>
-          </li>
-          <li class="social__icon social__icon--linkedin">
-            <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/theo-ballew-b445a295">
-              <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg>
-              linkedin
-            </a>
-          </li>
-        </ul>
-      </footer>
+          </section>
+        </article>
+        <footer class="footer">
+          <ul class="social">
+            <li class="social__icon social__icon--drupal">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.drupal.org/u/void">
+                <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1295 1586q-5-19-24-5-30 22-87 39t-131 17q-129 0-193-49-5-4-13-4-11 0-26 12-7 6-7.5 16t7.5 20q34 32 87.5 46t102.5 12.5 99-4.5q41-4 84.5-20.5t65-30 28.5-20.5q12-12 7-29zm-39-115q-19-47-39-61-23-15-76-15-47 0-71 10-29 12-78 56-26 24-12 44 9 8 17.5 4.5t31.5-23.5q3-2 10.5-8.5t10.5-8.5 10-7 11.5-7 12.5-5 15-4.5 16.5-2.5 20.5-1q27 0 44.5 7.5t23 14.5 13.5 22q10 17 12.5 20t12.5-1q23-12 14-34zm355-281q0-22-5-44.5t-16.5-45-34-36.5-52.5-14q-33 0-97 41.5t-129 83.5-101 42q-27 1-63.5-19t-76-49-83.5-58-100-49-111-19q-115 1-197 78.5t-84 178.5q-2 112 74 164 29 20 62.5 28.5t103.5 8.5q57 0 132-32.5t134-71 120-70.5 93-31q26 1 65 31.5t71.5 67 68 67.5 55.5 32q35 3 58.5-14t55.5-63q28-41 42.5-101t14.5-106zm53-160q0 164-62 304.5t-166 236-242.5 149.5-290.5 54-293-57.5-247.5-157-170.5-241.5-64-302q0-89 19.5-172.5t49-145.5 70.5-118.5 78.5-94 78.5-69.5 64.5-46.5 42.5-24.5q14-8 51-26.5t54.5-28.5 48-30 60.5-44q36-28 58-72.5t30-125.5q129 155 186 193 44 29 130 68t129 66q21 13 39 25t60.5 46.5 76 70.5 75 95 69 122 47 148.5 19.5 177.5z"/></svg>
+                drupal
+              </a>
+            </li>
+            <li class="social__icon social__icon--github">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/void--">
+                <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M896 128q209 0 385.5 103t279.5 279.5 103 385.5q0 251-146.5 451.5t-378.5 277.5q-27 5-40-7t-13-30q0-3 .5-76.5t.5-134.5q0-97-52-142 57-6 102.5-18t94-39 81-66.5 53-105 20.5-150.5q0-119-79-206 37-91-8-204-28-9-81 11t-92 44l-38 24q-93-26-192-26t-192 26q-16-11-42.5-27t-83.5-38.5-85-13.5q-45 113-8 204-79 87-79 206 0 85 20.5 150t52.5 105 80.5 67 94 39 102.5 18q-39 36-49 103-21 10-45 15t-57 5-65.5-21.5-55.5-62.5q-19-32-48.5-52t-49.5-24l-20-3q-21 0-29 4.5t-5 11.5 9 14 13 12l7 5q22 10 43.5 38t31.5 51l10 23q13 38 44 61.5t67 30 69.5 7 55.5-3.5l23-4q0 38 .5 88.5t.5 54.5q0 18-13 30t-40 7q-232-77-378.5-277.5t-146.5-451.5q0-209 103-385.5t279.5-279.5 385.5-103zm-477 1103q3-7-7-12-10-3-13 2-3 7 7 12 9 6 13-2zm31 34q7-5-2-16-10-9-16-3-7 5 2 16 10 10 16 3zm30 45q9-7 0-19-8-13-17-6-9 5 0 18t17 7zm42 42q8-8-4-19-12-12-20-3-9 8 4 19 12 12 20 3zm57 25q3-11-13-16-15-4-19 7t13 15q15 6 19-6zm63 5q0-13-17-11-16 0-16 11 0 13 17 11 16 0 16-11zm58-10q-2-11-18-9-16 3-14 15t18 8 14-14z"/></svg>
+                github
+              </a>
+            </li>
+            <li class="social__icon social__icon--linkedin">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/theo-ballew-b445a295">
+                <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg>
+                linkedin
+              </a>
+            </li>
+          </ul>
+        </footer>
+      </div>
     </div>
     <!--
       This HTML file is a template.
