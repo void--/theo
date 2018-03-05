@@ -1,28 +1,121 @@
-.App {
-  text-align: center;
+.header,
+.content__section {
+    transition: all 0.3s;
+    opacity: 1;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.header {
+    text-align: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.footer {
+    transition: opacity .3s;
 }
 
-.App-title {
-  font-size: 1.5em;
+.content__caption {
+    transition: all 0.3s;
 }
 
-.App-intro {
-  font-size: large;
+.web-content,
+.drum-content {
+    opacity: 0;
+    transition: all 0.3s;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.path--web .web .content__caption,
+.path--drums .drums .content__caption {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    font-size: 7em;
+    background: transparent;
+    color: white;
+    font-weight: 900;
+}
+
+.path--web:not(.animating) .back-link,
+.path--drums:not(.animating) .back-link,
+.path--web:not(.animating) .web-content,
+.path--drums:not(.animating) .drum-content {
+    opacity: 1;
+}
+
+.path--web .header,
+.path--web .drums {
+    opacity: 0;
+}
+
+.path--web .web {
+    z-index: 1000;
+    top: 0;
+}
+
+.path--drums .header,
+.path--drums .web {
+    opacity: 0;
+}
+
+.path--drums .drums {
+    z-index: 1000;
+    top: 0;
+}
+
+@media (min-width: 800px) {
+
+    .web img,
+    .drums img {
+        transition: all 0.3s;
+    }
+
+    .path--web .web {
+        width: calc(100% - 320px);
+        left: 20px;
+        height: 100vh;
+        overflow: scroll;
+    }
+
+    .path--web .header {
+        left: calc(100% - 250px);
+        opacity: 1;
+    }
+
+    .path--web:not(.animating) .footer,
+    .path--drums:not(.animating) .footer {
+        top: 350px;
+        display: flex;
+        width: 300px;
+        left: calc(100% - 300px);
+        height: calc(100vh - 350px);
+        flex-direction: column;
+    }
+
+    .path--web:not(.animating) .social,
+    .path--drums:not(.animating) .social {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0;
+        height: 100px;
+    }
+
+    .path--web.animating .footer,
+    .path--drums.animating .footer {
+        opacity: 0;
+    }
+
+    .path--drums .drums {
+        width: calc(100% - 320px);
+        left: 300px;
+        height: 100vh;
+        overflow: scroll;
+    }
+
+    .path--drums .header {
+        left: 50px;
+        opacity: 1;
+    }
+
+    .path--drums:not(.animating) .footer {
+        left: 0;
+    }
 }
