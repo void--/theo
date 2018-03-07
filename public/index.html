@@ -11,17 +11,30 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300, 900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,900" rel="stylesheet">
 
     <style>
       * {
         box-sizing: border-box;
+        font-family: 'Lato', Helvetica, sans-serif;
+        font-weight: 100;
+        color: #333;
       }
       body {
         margin: 0;
       }
+      h1 {
+        margin: 0.75em 0;
+      }
+      p,
+      ul {
+        font-size: 17px;
+      }
       p {
-        margin: 0 0 5px;
+        margin: 0 0 15px;
+      }
+      a {
+        color: #0077b5;
       }
       img {
         display: block;
@@ -33,10 +46,6 @@
         max-width: 1200px;
         margin: 0 auto;
       }
-      .header {
-        padding-top: 10px;
-        margin-bottom: 75px;
-      }
       .back-link {
         display: inline-block;
         opacity: 0;
@@ -44,7 +53,6 @@
         margin-bottom: 10px;
         text-decoration: none;
         color: #999;
-        font-family: Lato, sans-serif;
       }
 
       .back-link:hover {
@@ -54,19 +62,22 @@
       .me {
         text-align: center;
       }
+      .me a {
+        margin-bottom: 10px;
+        display: inline-block;
+      }
       .me__image {
         height: 200px;
         width: 200px;
-        margin-bottom: 10px;
         border-radius: 100%;
         background: #333;
       }
       .me__caption {
-        font-family: 'Lato', sans-serif;
         font-weight: 100;
       }
       .me__name {
         font-size: 32px;
+        margin-bottom: 5px;
       }
       .me__email {
         text-decoration: none;
@@ -81,7 +92,6 @@
         width: 100%;
         height: 0;
         padding-bottom: 66.666666666%;
-        cursor: pointer;
       }
       .content__caption {
         transition: height 0.3s, width 0.3s, font-size 0.3s;
@@ -96,7 +106,6 @@
         text-align: center;
         padding: 20px;
         font-size: 24px;
-        font-family: 'Lato', sans-serif;
         font-weight: 100;
         text-transform: uppercase;
         width: 200px;
@@ -131,7 +140,6 @@
         align-items: center;
         color: #999;
         text-decoration: none;
-        font-family: 'Lato', sans-serif;
         font-size: 15px;
         transition: color 0.4s;
       }
@@ -170,8 +178,10 @@
       }
 
       .header {
-        width: 200px;
-        left: calc(50% - 100px);
+        width: 300px;
+        left: calc(50% - 150px);
+        padding-top: 10px;
+        margin-bottom: 75px;
       }
 
       .web {
