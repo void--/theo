@@ -20,32 +20,44 @@
         font-weight: 100;
         color: #333;
       }
+
       body {
         margin: 0;
       }
+
       h1 {
         margin: 0.75em 0;
+        font-weight: 900;
       }
+
       p,
       ul {
         font-size: 17px;
       }
+
       p {
         margin: 0 0 15px;
       }
+
       a {
         color: #0077b5;
       }
+
       img {
         display: block;
+        width: 100%;
+        height: auto;
       }
+
       figure {
         margin: 0;
       }
+
       .root {
         max-width: 1200px;
         margin: 0 auto;
       }
+
       .back-link {
         display: inline-block;
         opacity: 0;
@@ -53,6 +65,8 @@
         margin-bottom: 10px;
         text-decoration: none;
         color: #999;
+        height: 20px;
+        vertical-align: top;
       }
 
       .back-link:hover {
@@ -62,30 +76,38 @@
       .me {
         text-align: center;
       }
+
       .me a {
-        margin-bottom: 10px;
         display: inline-block;
       }
+
       .me__image {
         height: 200px;
         width: 200px;
         border-radius: 100%;
         background: #333;
+        display: inline-block;
+        margin-bottom: 10px;
       }
+
       .me__caption {
         font-weight: 100;
       }
+
       .me__name {
         font-size: 32px;
         margin-bottom: 5px;
       }
+
       .me__email {
         text-decoration: none;
       }
+
       .content__image {
         max-width: 100%;
         width: 100%;
       }
+
       .content__figure {
         position: relative;
         background: #333;
@@ -93,6 +115,7 @@
         height: 0;
         padding-bottom: 66.666666666%;
       }
+
       .content__caption {
         transition: height 0.3s, width 0.3s, font-size 0.3s;
         display: flex;
@@ -125,6 +148,10 @@
         margin: 100px auto;
         padding: 0;
         justify-content: space-between;
+      }
+
+      .social__icon {
+        width: 80px;
       }
 
       .social__icon svg {
@@ -245,7 +272,7 @@
     <div class="root" id="root">
       <div class="container">
         <header class="header">
-          <a class="back-link" href="/">Home</a>
+          <span class="back-link"></span>
           <figure class="me">
             <img class="me__image" src="./images/me.png" alt="it's me!">
             <figcaption class="me__caption">
@@ -263,7 +290,7 @@
           </section>
           <section class="drums content__section">
             <figure onclick="handleEarlyClick(event, 'drums')" id="drums" class="content__figure">
-              <img class="content__image" src="./images/drums.jpg" alt="me drummin'">
+              <img class="content__image" src="./images/regency.jpg" alt="me drummin'">
               <figcaption class="content__caption">Drums</figcaption>
             </figure>
           </section>
