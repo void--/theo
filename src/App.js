@@ -35,7 +35,8 @@ class Main extends Component {
     }
 
     render() {
-        var redirect = sessionStorage.getItem('earlyClick');
+        const redirect = sessionStorage.getItem('earlyClick');
+        const path = this.props.location.pathname.slice(1);
 
         if (redirect) {
             sessionStorage.removeItem('earlyClick');
@@ -47,14 +48,14 @@ class Main extends Component {
             <div className={`container path--${this.props.location.pathname.slice(1)} ${animating}`}>
                 {redirect && <Redirect to={`/${redirect}`} />}
 
-                <Header />
+                <Header path={path} />
 
                 <article className="content">
                     <section className="web content__section">
-                        <Web path={this.props.location.pathname.slice(1)}/>
+                        <Web path={path}/>
                     </section>
                     <section className="drums content__section">
-                        <Drums path={this.props.location.pathname.slice(1)} />
+                        <Drums path={path} />
                     </section>
                 </article>
 
@@ -64,45 +65,68 @@ class Main extends Component {
     }
 }
 
-const Web = ({ path }) => {
-    const showLink = (path !== 'web');
+class Web extends Component {
+    state = {
+        showLink: true
+    };
 
-    console.log(showLink);
+    componentWillReceiveProps(nextProps) {
+        setTimeout(() => {
+            this.setState({showLink: (nextProps.path !== 'web')});
+        }, 300);
+    }
 
-    const figure = (
-        <figure className="content__figure">
-            <img className="content__image" src="./images/code.jpeg" alt="dumb stock photo of someone writing code "/>
-            <figcaption className="content__caption">Web</figcaption>
-        </figure>
-    );
+    render() {
+        const {showLink} = this.state;
 
-    return (
-        <div>
-            {showLink ? <Link to="/web">{figure}</Link> : figure }
+        const figure = (
+            <figure className="content__figure">
+                <img className="content__image" src="./images/code.jpeg" alt="dumb stock photo of someone writing code"/>
+                <figcaption className="content__caption">Web</figcaption>
+            </figure>
+        );
 
-            <Route path="/web" component={WebContent} />
-        </div>
+        return (
+            <div>
+                {showLink ? <Link to="/web">{figure}</Link> : figure}
 
-    );
-};
+                <Route path="/web" component={WebContent} />
+            </div>
 
-const Drums = ({ path }) => {
-    const showLink = (path !== 'drums');
+        );
+    }
+}
 
-    const figure = (
-        <figure className="content__figure">
-            <img className="content__image" src="./images/drums.jpg" alt="me drummin'"/>
-            <figcaption className="content__caption">Drums</figcaption>
-        </figure>
-    );
-    return (
-        <div>
-            {showLink ? <Link to="/drums">{figure}</Link> : figure }
+class Drums extends Component {
+    state = {
+        showLink: true
+    };
 
-            <Route path="/drums" component={DrumContent} />
+    componentWillReceiveProps(nextProps) {
+        setTimeout(() => {
+            this.setState({showLink: (nextProps.path !== 'drums')});
+        }, 300);
+    }
 
-        </div>
-    );
-};
+    render() {
+        const {showLink} = this.state;
+
+        const figure = (
+            <figure className="content__figure">
+                <img className="content__image" src="./images/regency.jpg" alt="me drummin'"/>
+                <figcaption className="content__caption">Drums</figcaption>
+            </figure>
+        );
+
+        return (
+            <div>
+                {showLink ? <Link to="/drums">{figure}</Link> : figure}
+
+                <Route path="/drums" component={DrumContent} />
+            </div>
+
+        );
+    }
+}
 
 export default App;
