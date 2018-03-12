@@ -20,13 +20,13 @@ export default () => {
                     <img src="./images/web/migration.jpeg" alt="" />
                 </div>
                 <div style={styles.galleryItem}>
-                    <img src="./images/web/sfplanning.png" alt="" />
+                    <img src="./images/web/sfplanning.jpeg" alt="" />
                 </div>
                 <div style={styles.galleryItem}>
                     <img src="./images/web/migration.jpeg" alt="" />
                 </div>
                 <div style={styles.galleryItem}>
-                    <img src="./images/web/whatsgood.png" alt="" />
+                    <img src="./images/web/whatsgood.jpeg" alt="" />
                 </div>
 
             </div>
