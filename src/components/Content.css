@@ -1,3 +1,34 @@
 h1 {
     font-size: 2em;
 }
+
+.content-footer {
+    position: relative;
+    margin: 40px auto;
+    width: 50px;
+}
+
+.content-footer svg {
+    height: 50px;
+    width: 50px;
+    fill: #555;
+}
+
+.content-footer::before,
+.content-footer::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 50px;
+    background: #555;
+    position: absolute;
+    top: calc(50% - 1px);
+}
+
+.content-footer:before {
+    left: -70px;
+}
+
+.content-footer:after {
+    right: -70px;
+}
