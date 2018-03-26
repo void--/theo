@@ -1,5 +1,6 @@
 import React from 'react';
 import './Content.css';
+import Modal from './Modal';
 
 export default () => {
     return (
@@ -21,28 +22,28 @@ export default () => {
             </ul>
 
             <p>
-                Check back soon for video samples, in the mean time you'll have to make due with some gear porn:
+                Check back soon for video samples!
             </p>
 
-            <div style={styles.gallery}>
-                <div style={styles.galleryItem}>
-                    <img src="./images/drums/drums.jpg" alt=""/>
-                </div>
-                <div style={styles.galleryItem}>
-                    <img src="./images/drums/mic.jpg" alt=""/>
-                </div>
-                <div style={styles.galleryItem}>
-                    <img src="./images/drums/microphones.jpg" alt=""/>
-                </div>
-                <div style={styles.galleryItem}>
-                    <img src="./images/drums/opamp.jpg" alt=""/>
-                </div>
-                <div style={styles.galleryItem}>
-                    <img src="./images/drums/pres.jpg" alt=""/>
-                </div>
-                <div style={styles.galleryItem}>
-                    <img src="./images/drums/graveyard.jpg" alt=""/>
-                </div>
+            <div className="gallery">
+                <Modal thumbnail="./images/drums/drums.jpg"
+                       className="gallery-item">
+                </Modal>
+                <Modal thumbnail="./images/drums/microphones.jpg"
+                       className="gallery-item">
+                </Modal>
+                <Modal thumbnail="./images/drums/mic.jpg"
+                       className="gallery-item">
+                </Modal>
+                <Modal thumbnail="./images/drums/opamp.jpg"
+                       className="gallery-item">
+                </Modal>
+                <Modal thumbnail="./images/drums/pres.jpg"
+                       className="gallery-item">
+                </Modal>
+                <Modal thumbnail="./images/drums/graveyard.jpg"
+                       className="gallery-item">
+                </Modal>
             </div>
             
             <div className="content-footer">
@@ -67,18 +68,4 @@ export default () => {
             </div>
         </div>
     );
-};
-
-const styles = {
-    gallery: {
-        display: "flex",
-        justifyContent: "space-between",
-        flexWrap: "wrap",
-        marginTop: 25
-    },
-    galleryItem: {
-        width: "33.3333333333%",
-        height: "33.3333333333%",
-        background: "radial-gradient(circle at 0% 0%,#816BF9,#000)",
-    }
 };

@@ -32,3 +32,74 @@ h1 {
 .content-footer:after {
     right: -70px;
 }
+
+.gallery {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.gallery-item {
+    width: 33.333333%;
+    overflow: hidden;
+}
+
+.gallery-item > img {
+    transform: scale(1.01);
+}
+
+.gallery-item > img:hover {
+    transform: scale(1.05);
+}
+
+.modal-wrapper {
+    will-change: top, left, width;
+}
+
+.gallery-item p:last-child {
+    margin-bottom: 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    background: transparent;
+    transition: opacity 0.3s;
+    border: none;
+    opacity: 0;
+}
+
+.open .modal-close {
+    opacity: 1;
+}
+
+.modal-content {
+    transition: opacity .3s;
+}
+
+.opening .modal-content,
+.closing .modal-content {
+    opacity: 0;
+}
+
+.open .modal-content {
+    opacity: 1;
+}
+
+
+
+.modal-close::after {
+    content: '×';
+    display: block;
+    color: white;
+    font-size: 25px;
+}
+
+.modal-content {
+    background: rgba(255,255,255, 1);
+    padding: 20px;
+}
