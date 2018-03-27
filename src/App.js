@@ -7,9 +7,20 @@ import {animateScroll as scroll} from 'react-scroll';
 import WebContent from './components/WebContent';
 import DrumContent from './components/DrumContent';
 
+
+
+import {createBrowserHistory} from 'history';
+
+const history = createBrowserHistory();
+
+history.listen(function (location) {
+    const path = (/#(\/.*)$/.exec(location.hash) || [])[1];
+    if (path) history.replace(path);
+});
+
 const App = () => {
     return (
-        <Router>
+        <Router history={history}>
             <Route path="/" component={Main}/>
         </Router>
 
