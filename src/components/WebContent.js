@@ -8,13 +8,15 @@ export default class WebContent extends Component {
 
         return (
             <div className="web-content">
-                <h1>Full stack web developer specializing in JavaScript and PHP</h1>
-                <p>
-                    I build things on the web, usually with JavaScript, PHP, or both. I like solving tough problems, whether it's front-end or back-end, as long as it's interesting and worthwhile it'll probably hold my attention.
-                    I'm a big fan of React, especially when it's the right tool for the job, I think PHP gets a bad wrap, and I'm a fervent Drupal 8 apologist. Last but not least, I'm a Developer at <a href="https://www.chapterthree.com/">Chapter Three</a>, a full-service web agency in San Francisco.
-                </p>
+                <div className="text">
+                    <h1>Full stack web developer specializing in JavaScript and PHP</h1>
+                    <p>
+                        I build things on the web, usually with JavaScript, PHP, or both. I like solving tough problems, whether it's front-end or back-end, as long as it's interesting and worthwhile it'll probably hold my attention.
+                        I'm a big fan of React, especially when it's the right tool for the job, I think PHP gets a bad wrap, and I'm a fervent Drupal 8 apologist. Last but not least, I'm a Developer at <a href="https://www.chapterthree.com/">Chapter Three</a>, a full-service web agency in San Francisco.
+                    </p>
 
-                <p>Check out some of my recent projects below:</p>
+                    <p>Check out some of my recent projects below:</p>
+                </div>
                 <div className="gallery">
                     <Modal className="gallery-item"
                            thumbnail="./images/web/react-drupal.jpg"

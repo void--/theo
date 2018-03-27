@@ -17,7 +17,7 @@ export default ({path}) => {
 
     return (
         <header className="header">
-                {showLink ? <Link className="back-link" to="/">Home</Link> : <span className="back-link"></span>}
+            {showLink ? <Link className="back-link" to="/">Home</Link> : <span className="back-link"></span>}
             {content}
         </header>
     );
