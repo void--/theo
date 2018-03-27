@@ -79,6 +79,9 @@ h1 {
 
 .modal-content {
     transition: opacity .3s;
+    line-height: 1.5em;
+    background: #fff;
+    padding: 30px;
 }
 
 .opening .modal-content,
@@ -97,9 +100,4 @@ h1 {
     display: block;
     color: white;
     font-size: 25px;
-}
-
-.modal-content {
-    background: rgba(255,255,255, 1);
-    padding: 20px;
 }
