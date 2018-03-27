@@ -4,7 +4,8 @@ class Modal extends Component {
     state = {
         imageLoaded: false,
         modalState: 'closed',
-        parentPosition: {}
+        parentPosition: {},
+        windowWidth: document.body.clientWidth
     };
 
     openModal = () => {
@@ -30,15 +31,18 @@ class Modal extends Component {
     };
 
     componentWillMount() {
+        // update state on resize
+        window.addEventListener('resize', () => this.setState({windowWidth: document.body.clientWidth}));
         // load the full image
     }
 
     render () {
 
         const {className, thumbnail, image} = this.props;
-        const {imageLoaded, modalState, parentPosition} = this.state;
+        const {imageLoaded, modalState, parentPosition, windowWidth} = this.state;
 
-        const screenWidth = document.body.clientWidth;
+        const modalWidth = windowWidth > 1000 ? '700px' : '70vw';
+        const modalLeft = windowWidth > 1000 ? (windowWidth - 700) / 2 : '15vw';
 
         const modalStyles = {
             modal: {
@@ -57,8 +61,8 @@ class Modal extends Component {
             },
             open: {
                 position: 'relative',
-                width: '70vw',
-                left: '15vw',
+                width: modalWidth,
+                left: modalLeft,
                 top: 50,
                 // transform: `translate(${0.15*screenWidth -  parentPosition.x}px, ${50 - parentPosition.top}px)`,
                 // top: parentPosition.top,
@@ -92,7 +96,6 @@ class Modal extends Component {
             overflow: 'scroll'
         };
 
-        console.log(this.props.children);
         return (
             <div ref={(imageWrapper) => {this.imageWrapper = imageWrapper;}} className={className} >
                 <img src={thumbnail} alt="" onClick={this.openModal}/>
