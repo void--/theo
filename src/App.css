@@ -36,7 +36,7 @@
 .path--drums .drums .content__caption {
     width: calc(100% - 20px);
     height: calc(100% - 20px);
-    font-size: 7em;
+    font-size: 5.5em;
     background: transparent;
     color: white;
     font-weight: 900;
@@ -94,6 +94,13 @@
 .path--drums .drums {
     z-index: 1000;
     top: 0;
+}
+
+@media (min-width: 500px) {
+    .path--web .web .content__caption,
+    .path--drums .drums .content__caption {
+        font-size: 7em;
+    }
 }
 
 @media (min-width: 800px) {
