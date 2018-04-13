@@ -30,10 +30,18 @@ class Modal extends Component {
         }, 300);
     };
 
-    componentWillMount() {
+    handleResize = () => {
+        this.setState({windowWidth: document.body.clientWidth});
+    };
+
+    componentDidMount() {
         // update state on resize
-        window.addEventListener('resize', () => this.setState({windowWidth: document.body.clientWidth}));
+        window.addEventListener('resize', this.handleResize);
         // load the full image
+    }
+
+    componentWillUnMount() {
+        window.removeEventListener('resize', this.handleResize);
     }
 
     render () {

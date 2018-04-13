@@ -88,9 +88,13 @@ class Web extends Component {
 
         const figure = (
             <figure className="content__figure">
-
+                <img className="content__image content__image--blurred" src="./images/code.jpeg" alt="dumb stock photo of someone writing code"/>
                 <img className="content__image" src="./images/code.jpeg" alt="dumb stock photo of someone writing code"/>
-                <figcaption className="content__caption">Web</figcaption>
+                <figcaption className="content__caption-container">
+                    <div className="content__caption">Web</div>
+                    <div className="content__subcaption">Full stack web developer</div>
+                </figcaption>
+                <div className="content__gradient"></div>
             </figure>
         );
 
@@ -125,8 +129,13 @@ class Drums extends Component {
 
         const figure = (
             <figure className="content__figure">
+                <img className="content__image content__image--blurred" src="./images/regency.jpg" alt="me drummin'"/>
                 <img className="content__image" src="./images/regency.jpg" alt="me drummin'"/>
-                <figcaption className="content__caption">Drums</figcaption>
+                <figcaption className="content__caption-container">
+                    <div className="content__caption">Drums</div>
+                    <div className="content__subcaption">Online session drummer</div>
+                </figcaption>
+                <div className="content__gradient"></div>
             </figure>
         );
 

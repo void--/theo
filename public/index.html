@@ -62,7 +62,7 @@
       .back-link {
         display: inline-block;
         opacity: 0;
-        transition: all 0.3s;
+        transition: color 0.3s, opacity 0.3s;
         margin-bottom: 10px;
         text-decoration: none;
         color: #999;
@@ -105,8 +105,18 @@
       }
 
       .content__image {
-        max-width: 100%;
-        width: 100%;
+        transition: transform 0.3s, opacity 0.3s;
+        will-change: transform, opacity;
+        width: 104%;
+        transform: translate3d(-3%, 0, 0);
+      }
+
+      .content__image--blurred {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        opacity: 1;
+        filter: blur(5px);
       }
 
       .content__figure {
@@ -115,31 +125,82 @@
         width: 100%;
         height: 0;
         padding-bottom: 66.666666666%;
+        overflow: hidden;
       }
 
-      .content__caption {
-        transition: height 0.3s, width 0.3s, font-size 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 69px;
+      .content__caption-container {
+        transition: height 0.3s, width 0.3s;
+        will-change: height, width;
+        height: 60px;
         position: absolute;
+        margin: 36px 40px;
         bottom: 0;
-        background: rgba(255,255,255,0.6);
-        margin: 10px;
-        text-align: center;
-        padding: 20px;
-        font-size: 24px;
+        left: 0;
+        font-size: 32px;
         font-weight: 100;
         text-transform: uppercase;
-        width: 200px;
-        color: black;
+        z-index: 2;
       }
 
-      .content__figure:hover .content__caption {
-        width: calc(100% - 20px);
-        height: calc(100% - 20px);
-        font-size: 2.5em;
+      .content__caption,
+      .content__subcaption {
+        transition: transform 0.3s, opacity 0.3s;
+        color: white;
+        transform: translate3d(0, 26px, 0);
+      }
+      .content__subcaption {
+        opacity: 0;
+        font-size: 18px;
+      }
+
+      .me {
+        transition: transform 0.5s;
+        transform: rotate(0deg);
+        transition-delay: 0s;
+      }
+
+      .me:hover {
+        transform: rotate(1200deg);
+        transition-delay: 12.666s;
+      }
+
+      .content__gradient {
+        background: linear-gradient(10deg, rgba(0,0,0,0.8) 0%, rgba(255,255,255,0) 40%);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        transition: opacity 0.3s;
+        opacity: 0;
+      }
+
+      .content__figure:hover .content__gradient {
+        opacity: 1;
+      }
+
+      .content__figure:hover .content__caption,
+      .content__figure:hover .content__subcaption {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+      .content__figure:hover .content__subcaption {
+        transition-delay: 0.1s;
+      }
+
+      .content__figure:hover .content__image {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .content__figure:hover .content__image--blurred {
+        opacity: 0;
+      }
+
+      @-moz-document url-prefix() {
+        .content__image--blurred {
+          display: none;
+        }
       }
 
       .social {
@@ -285,14 +346,24 @@
         <article class="content">
           <section class="web content__section">
             <figure onclick="handleEarlyClick(event, 'web')" id="web" class="content__figure">
+              <img class="content__image content__image--blurred" src="./images/code.jpeg" alt="dumb stock photo of someone writing code ">
               <img class="content__image" src="./images/code.jpeg" alt="dumb stock photo of someone writing code ">
-              <figcaption class="content__caption">Web</figcaption>
+              <figcaption class="content__caption-container">
+                <div class="content__caption">Web</div>
+                <div class="content__subcaption">Full stack web developer</div>
+              </figcaption>
+              <div class="content__gradient"></div>
             </figure>
           </section>
           <section class="drums content__section">
             <figure onclick="handleEarlyClick(event, 'drums')" id="drums" class="content__figure">
+              <img class="content__image content__image--blurred" src="./images/regency.jpg" alt="me drummin'">
               <img class="content__image" src="./images/regency.jpg" alt="me drummin'">
-              <figcaption class="content__caption">Drums</figcaption>
+              <figcaption class="content__caption-container">
+                <div class="content__caption">Drums</div>
+                <div class="content__subcaption">Online session drummer</div>
+              </figcaption>
+              <div class="content__gradient"></div>
             </figure>
           </section>
         </article>

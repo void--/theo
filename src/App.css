@@ -1,19 +1,16 @@
-.header,
-.content__section {
-    transition: all 0.3s;
-    opacity: 1;
-}
-
 .header {
+    transition: left 0.3s, opacity 0.3s;
+    will-change: left, opacity;
     text-align: center;
+}
+.content__section {
+    transition: height 0.3s, width 0.3s, left 0.3s, top 0.3s, padding 0.3s, opacity 0.3s;
+    will-change: height, width, left, top, padding, opacity;
+    opacity: 1;
 }
 
 .footer {
     transition: opacity .3s;
-}
-
-.content__caption {
-    transition: all 0.3s;
 }
 
 .web-content,
@@ -32,16 +29,6 @@
     transition: all 0.3s;
 }
 
-.path--web .web .content__caption,
-.path--drums .drums .content__caption {
-    width: calc(100% - 20px);
-    height: calc(100% - 20px);
-    font-size: 5.5em;
-    background: transparent;
-    color: white;
-    font-weight: 900;
-}
-
 .mobile.back-link {
     position: absolute;
     top: 0;
@@ -51,17 +38,44 @@
     z-index: 999;
     display: flex;
     align-items: center;
-    font-weight: 900;
     color: white;
     margin-bottom: 0;
     padding: 20px 10px;
+    margin: 10px 20px;
+}
+
+.mobile.back-link:before {
+    content: '';
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    transform: rotate(45deg);
+    top: 1px;
+    position: relative;
 }
 
 .mobile.back-link svg {
-    width: 16px;
-    height: 16px;
-    top: 1px;
-    position: relative;
+    display: none;
+}
+
+.path--web .content__caption,
+.path--drums .content__caption,
+.path--web .content__subcaption,
+.path--drums .content__subcaption {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.path--web .content__gradient,
+.path--drums .content__gradient {
+    opacity: 1;
+}
+
+.path--web .content__image,
+.path--drums .content__image {
+    transform: translateX(0);
 }
 
 .path--web:not(.animating) .back-link,
@@ -79,6 +93,11 @@
 .path--web .web {
     z-index: 1000;
     top: 0;
+}
+
+.path--web .content__image--blurred,
+.path--drums .content__image--blurred {
+    opacity: 0;
 }
 
 .path--drums .header,
@@ -99,7 +118,7 @@
 @media (min-width: 500px) {
     .path--web .web .content__caption,
     .path--drums .drums .content__caption {
-        font-size: 7em;
+        /*font-size: 7em;*/
     }
 }
 

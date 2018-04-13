@@ -19,7 +19,7 @@ export default () => {
                     <li>Shure KSM 32</li>
                     <li>Vintage(ish) AKG 414 B-ULS</li>
                     <li>Classic Audio Products of Illinois vintage API clones: both the 312 and vp28</li>
-                    <li>High end dynamic mics - Beyer m88, EV RE20, Shure SM7b, etc.</li>
+                    <li>High end dynamic mics - Beyer m88, EV RE20, Shure SM7b, Sennheiser md421, etc.</li>
                 </ul>
 
                 <p>
