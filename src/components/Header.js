@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 
 export default ({path}) => {
     const showLink = path;
-    const image = <img className="me__image" src="./images/me.png" alt="it's me!"/>;
+    const image = <img className="me__image" src="./images/me.jpg" alt="it's me!"/>;
 
     const content = (
         <figure className="me">
