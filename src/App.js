@@ -6,6 +6,7 @@ import './App.css';
 import {animateScroll as scroll} from 'react-scroll';
 import WebContent from './components/WebContent';
 import DrumContent from './components/DrumContent';
+import preloadImages from './utils/preloadImages';
 
 import {createBrowserHistory} from 'history';
 
@@ -27,6 +28,10 @@ class Main extends Component {
     state = {
         animating: false
     };
+
+    componentDidMount() {
+        preloadImages();
+    }
 
     componentWillReceiveProps(nextProps) {
         scroll.scrollToTop({
