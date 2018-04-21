@@ -40,7 +40,7 @@ export default class WebContent extends Component {
                             Over the past year I've performed 2 ruby to Drupal 8 migrations, one Drupal 7 to Drupal 8 migration, one recurring upload using the Drupal 8 migrate module, and one XML to Drupal 8 migration.
                     </Modal>
                     <Modal className="gallery-item"
-                           thumbnail="./images/web/wasc.png"
+                           thumbnail="./images/web/wasc.jpg"
                     >
                             The Western Association of Schools and Colleges is an official academic body responsible for the accreditation of public and private universities, colleges, secondary and elementary schools in California.
                             If that sounds like a Wikipedia quote, it's because it is... you can't really put it more succinctly than that. I've worked with WASC for the past few years maintaining and adding features to their multiple web properties,
