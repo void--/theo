@@ -54,7 +54,7 @@ h1 {
 }
 
 .modal-wrapper {
-    will-change: top, left, width;
+    will-change: top, left, transform;
 }
 
 .gallery-item p:last-child {

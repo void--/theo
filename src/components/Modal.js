@@ -50,19 +50,23 @@ class Modal extends Component {
         const {imageLoaded, modalState, parentPosition, windowWidth} = this.state;
 
         const modalWidth = windowWidth > 1000 ? '700px' : '70vw';
+        const realModalWidth = windowWidth > 1000 ? 700 : (0.7 * windowWidth);
         const modalLeft = windowWidth > 1000 ? (windowWidth - 700) / 2 : '15vw';
+
+        console.log(parentPosition.width/realModalWidth);
 
         const modalStyles = {
             modal: {
                 position: 'fixed',
                 display: 'none',
-                // transition: 'transform .3s ease, width .3s linear',
-                transition: 'left .3s, top .3s, width .3s',
+                transition: 'left .3s ease-in-out, top .3s ease-in-out, transform 0.3s ease',
+                transformOrigin: '0px 0px',
                 overflow: 'hidden',
                 zIndex: '1000'
             },
             opening: {
-                width: parentPosition.width,
+                width: modalWidth,
+                transform: `scale(${parentPosition.width/realModalWidth})`,
                 top: parentPosition.top,
                 left: parentPosition.x,
                 display: 'block'
@@ -72,13 +76,12 @@ class Modal extends Component {
                 width: modalWidth,
                 left: modalLeft,
                 top: 50,
-                // transform: `translate(${0.15*screenWidth -  parentPosition.x}px, ${50 - parentPosition.top}px)`,
-                // top: parentPosition.top,
-                // left: parentPosition.x,
+                transform: `scale(1)`,
                 display: 'block',
             },
             closing: {
-                width: parentPosition.width,
+                width: modalWidth,
+                transform: `scale(${parentPosition.width/realModalWidth})`,
                 top: parentPosition.top,
                 left: parentPosition.x,
                 display: 'block'
