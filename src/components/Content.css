@@ -93,8 +93,6 @@ h1 {
     opacity: 1;
 }
 
-
-
 .modal-close::after {
     content: '×';
     display: block;

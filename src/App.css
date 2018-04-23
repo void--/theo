@@ -26,7 +26,7 @@
 
 .web img,
 .drums img {
-    transition: all 0.3s;
+    transition: transform 0.3s;
 }
 
 .mobile.back-link {

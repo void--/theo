@@ -109,7 +109,7 @@ class Modal extends Component {
 
         return (
             <div ref={(imageWrapper) => {this.imageWrapper = imageWrapper;}} className={className} >
-                <img src={thumbnail} alt="" onClick={this.openModal}/>
+                <img src={thumbnail} alt="" onClick={this.openModal} style={(modalState === 'closed') ? {opacity: 1} : {opacity: 0}}/>
                 <div onClick={(e) => {if (e.target === this.modalWrapper) this.closeModal()}} style={backgroundStyle} ref={(modalWrapper) => {this.modalWrapper = modalWrapper}}>
                     <div className={`modal-wrapper ${modalState}`} style={modalStyle}>
                         <img style={(modalState === 'opening') ? {transform: 'scale(1.05)'} : {transform: 'scale(1.01)'}} src={thumbnail} alt="" onClick={this.openModal}/>
