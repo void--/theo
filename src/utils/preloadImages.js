@@ -3,7 +3,7 @@ export default () => {
         '/images/web/react-drupal.jpg',
         '/images/web/la-loves-javascript.jpeg',
         '/images/web/migration.jpeg',
-        '/images/web/wasc.png',
+        '/images/web/wasc.jpg',
         '/images/web/sfplanning.jpeg',
         '/images/web/whatsgood.jpeg',
         '/images/drums/drums.jpg',
