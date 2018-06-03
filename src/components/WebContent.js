@@ -15,7 +15,7 @@ export default class WebContent extends Component {
                         whether it's front-end or back-end, as long as it's interesting and worthwhile it'll probably
                         hold my attention.
                         I'm a big fan of React, especially when it's the right tool for the job, I think PHP gets a bad
-                        wrap, and I'm a fervent Drupal 8 apologist. Last but not least, I'm a Developer at <a
+                        rap, and I'm a fervent Drupal 8 apologist. Last but not least, I'm a Developer at <a
                         target="_blank" rel="noopener noreferrer" href="https://www.chapterthree.com/">Chapter Three</a>,
                         a full-service web agency in San Francisco.
                     </p>
